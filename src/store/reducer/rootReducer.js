@@ -1,10 +1,20 @@
-import userReducer from "./userReducer";
-import appReducer from "./appReducer";
-import { combineReducers } from "redux";
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+// import tableReducer from './tableReducer'
+// import appReducer from './appReducer'
+import reducerRegister from '../../common/helper/ReducerRegister'
 
-const rootReducer = combineReducers({
-    user: userReducer,
-    app: appReducer,
+const store = configureStore({
+  reducer: {
+    ...reducerRegister.reducers,
+  },
 })
 
-export default rootReducer;
+reducerRegister.setChangeListener((reducers) => {
+  console.log('store reducer')
+  store.replaceReducer(
+    combineReducers({
+      ...reducers,
+    }),
+  )
+})
+export default store

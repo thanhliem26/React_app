@@ -1,0 +1,13 @@
+.tool__tip {
+  min-height: 500px;
+  width: 100%;
+  color: white;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  a {
+    padding: 50px;
+  }
+}
